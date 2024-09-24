@@ -1,0 +1,295 @@
+body{
+    margin: 0px;
+}
+
+.outer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: aqua;
+
+    height: 600px;
+    width: 600px;
+
+    max-height: 550px;
+    min-height: 550px;
+    min-width: 550px;
+    max-width: 550px;
+}
+
+.outer-left{
+    height: 500px;
+    width: 300px;
+
+    background-color: lightcoral;
+
+    z-index: 1;
+}
+.outer-mid{
+    background-color: yellow;
+
+    height: 500px;
+    width: 500px;
+
+    max-height: 500px;
+    min-height: 500px;
+    min-width: 500px;
+    max-width: 500px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+.outer-right{
+    height: 500px;
+    width: 300px;
+
+    background-color: lightcoral;
+
+    z-index: 1;
+}
+
+.bird{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: lightgreen;
+
+    position: absolute;
+
+    left: 30%;
+    top : 50%;
+
+    height: 40px;
+    width: 40px;
+
+    border-radius: 50%;
+}
+
+.bar-1a{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    
+    height: 160px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+
+    top: 0px;
+    left: 105%;
+}
+
+.bar-1b{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    height: 130px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+    
+    bottom: 0;
+    left: 105%;
+}
+
+.bar-2a{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    height: 120px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+
+    top: 0px;
+    left: 520px;
+}
+
+.bar-2b{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    height: 170px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+    
+    bottom: 0;
+    left: 520px;
+}
+
+.bar-3a{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    height: 120px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+
+    top: 0px;
+    left: 520px;
+
+}
+
+.bar-3b{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    height: 170px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+    
+    bottom: 0;
+    left: 520px;
+}
+
+.bar-4a{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    height: 120px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+
+    top: 0px;
+    left: 520px;
+
+}
+
+.bar-4b{
+    background-color: rgb(247, 54, 54);
+
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    height: 170px;
+    width: 6%;
+
+    border-radius: 10px;
+
+    position: absolute;
+    
+    bottom: 0;
+    left: 520px;
+}
+
+/* Screen Shake Effect */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  
+  .shake {
+    animation: shake 0.5s;
+    animation-iteration-count: 1; /* Only shake once */
+  }
+  
+
+  /* Game Over Fade */
+  #game-over {
+    display: none;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+
+    text-align: center;
+    color: red;
+    opacity: 0;
+    transition: opacity 1s ease;
+
+    position: absolute;
+
+    top: 250; 
+    left: 250;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+/*  Inputs */
+
+.inputs-outer{
+    display: grid;
+
+    grid-template-columns: 1fr 1fr ;
+
+    background-color: aquamarine;
+    
+    width: 550px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 550;
+}
+
+.inputs-outer div{
+    display: inline-block;
+}
+
+.input-box{
+    display: flex;
+    justify-content: center;
+
+    background-color: beige;
+    margin: 10px;
+}

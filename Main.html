@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="Main.css">
+</head>
+
+<body >
+  
+    <center>
+
+        <div class="outer">
+
+            <div class="outer-mid">
+                
+                <div id="game-over">Game Over</div>
+    
+                <div class="bird">bird</div>
+        
+                <div class="bars">
+                    <div class="bar-1a"></div>
+                    <div class="bar-1b"></div>
+    
+                    <div class="bar-2a"></div>
+                    <div class="bar-2b"></div>
+    
+                    <div class="bar-3a"></div>
+                    <div class="bar-3b"></div>
+    
+                    <div class="bar-4a"></div>
+                    <div class="bar-4b"></div>
+                </div>
+    
+            </div>
+    
+        </div>
+
+        <div class="inputs-outer">
+
+            <div class="input-box">
+                <center>
+                    Gravity Strength <br> 
+                
+                    <input type="range" id="slider" min="0" max="10" value="5">  <br>
+    
+                    <span id="value">5</span>
+                </center>
+            </div>
+        
+            <div class="input-box">
+                <center>
+                    Jump Strength <br> 
+                
+                    <input type="range" id="slider" min="0" max="10" value="5">  <br>
+    
+                    <span id="value">5</span>
+                </center>
+            </div>
+        
+            <div class="input-box">
+                <center>
+                    Speed Increase Factor <br> 
+                
+                    <input type="range" id="slider" min="0" max="10" value="5">  <br>
+    
+                    <span id="value">5</span>
+                </center>
+            </div>
+        
+            <div class="input-box">
+                <center>
+                    Gap Decrease Factor <br> 
+                
+                    <input type="range" id="slider" min="0" max="10" value="5">  <br>
+    
+                    <span id="value">5</span>
+                </center>
+            </div>
+        
+        </div>
+    </center>
+
+        
+    
+
+    <script src="Main.js"></script>
+</body>
+
+</html>
