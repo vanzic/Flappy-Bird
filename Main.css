@@ -22,7 +22,7 @@ body {
 
     background-color: aqua;
 
-    height: 65vh;
+    height: 500px;
     width: 50vw;
 }
 
@@ -195,6 +195,7 @@ body {
 
     .inputs-outer{
         width: 100vw;
+        height: 20vh;
         background-color: antiquewhite;
     }
 
