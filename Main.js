@@ -4,7 +4,8 @@ let outerRect = outerMid.getBoundingClientRect();
 let bird = document.getElementsByClassName('bird')[0];
 
 // Gravity and jump strength scaled to outerMid height for responsiveness
-const gravity = outerMid.offsetHeight * 0.0005; // Scaled gravity
+
+const gravity = outerMid.offsetHeight * 0.0003; // Scaled gravity strength
 const jumpStrength = -outerMid.offsetHeight * 0.01; // Scaled jump strength
 
 let isJumping = false; 
