@@ -44,9 +44,7 @@ document.addEventListener('keyup', function(event) {
 });
 
 document.addEventListener('touchend', function(event) {
-    if (event.code === 'Space') {
-        isJumping = false;
-    }
+    isJumping = false;
 });
 
 let outerTop = outerRect.top;
