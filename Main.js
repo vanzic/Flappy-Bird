@@ -26,12 +26,6 @@ document.addEventListener('keydown' , function(event) {
     }
 });
 
-document.addEventListener('keyup', function(event) {
-    if (event.code === 'Space') {
-        isJumping = false;
-    }
-});
-
 document.addEventListener('touchstart' , function(event) {
     isJumping = true;
     velocity = jumpStrength;
@@ -43,17 +37,17 @@ document.addEventListener('touchstart' , function(event) {
     }
 });
 
-document.addEventListener('touchend' , function(event) {
-    isJumping = true;
-    velocity = jumpStrength;
-
-    if (!gameRunning && !gameHold) {
-        gameRunning = true;
-        applyGravity();
-        moveBars(right[0]);
+document.addEventListener('keyup', function(event) {
+    if (event.code === 'Space') {
+        isJumping = false;
     }
 });
 
+document.addEventListener('touchend', function(event) {
+    if (event.code === 'Space') {
+        isJumping = false;
+    }
+});
 
 let outerTop = outerRect.top;
 
