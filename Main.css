@@ -46,8 +46,8 @@ body {
     left: 30%; /* Use percentage */
     top: 50%; /* Use percentage */
 
-    height: 6vh; /* Use viewport height for responsiveness */
-    width: 6vh; /* Maintain aspect ratio */
+    height: 5vh; /* Use viewport height for responsiveness */
+    width: 5vh; /* Maintain aspect ratio */
     border-radius: 50%;
 }
 
@@ -59,7 +59,7 @@ body {
 .bar-3b,
 .bar-4a,
 .bar-4b {
-    background-color: rgb(247, 54, 54);
+    background-color: rgb(234, 96, 242);
     color: white;
     font-size: 4vw; /* Responsive font size */
     font-weight: 600;
@@ -149,6 +149,8 @@ body {
     transition: opacity 1s ease;
 
     position: absolute;
+
+    z-index: 2;
 
     top: 50%;
     left: 50%;
