@@ -9,7 +9,7 @@ body {
     height: 8vh;
     width: 50vw;
 
-    background-color: rgb(180, 249, 178);
+    background-color: rgb(168, 255, 127);
 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 6vh;
@@ -20,7 +20,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-color: aqua;
+    background-color: lightpink;
 
     height: 500px;
     width: 50vw;

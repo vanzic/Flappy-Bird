@@ -23,3 +23,10 @@
     height: 100%;
     width: 100%;
 }
+
+.title-img{
+    object-fit: contain;
+
+    height: 100%;
+    width: 100%;
+}
