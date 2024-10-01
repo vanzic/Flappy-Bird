@@ -154,6 +154,9 @@ body {
 
     z-index: 2;
 
+    height: 40%;
+    width: 40%;
+
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
