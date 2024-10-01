@@ -1,15 +1,13 @@
 let outerMid = document.getElementsByClassName('outer-mid')[0];
-let outerRect = outerMid.getBoundingClientRect();
-
 let bird = document.getElementsByClassName('bird')[0];
 
-// Set initial viewport dimensions
+// Get initial viewport dimensions
 let viewportHeight = window.innerHeight;
 let viewportWidth = window.innerWidth;
 
-// Gravity and jump strength scaled accordingly to viewport height for responsiveness
-let gravity = viewportHeight * 0.001; // Scaled gravity strength 
-let jumpStrength = -viewportHeight * 0.02; // Scaled jump strength
+// Gravity and jump strength scaled according to viewport height for responsiveness
+let gravity = viewportHeight * 0.0007; // Adjusted gravity strength
+let jumpStrength = -viewportHeight * 0.015; // Adjusted jump strength
 
 let isJumping = false; 
 let ground = viewportHeight - bird.offsetHeight; // Dynamic ground level based on viewport height
@@ -17,7 +15,23 @@ let ground = viewportHeight - bird.offsetHeight; // Dynamic ground level based o
 let gameRunning = false; // Control game state
 let gameHold = false;
 
-document.addEventListener('keydown' , function(event) {
+// Resize event to update calculations when the viewport changes
+window.addEventListener('resize', function() {
+    viewportHeight = window.innerHeight;
+    viewportWidth = window.innerWidth;
+
+    // Recalculate gravity, jump strength, and other dynamic values
+    gravity = viewportHeight * 0.0007;
+    jumpStrength = -viewportHeight * 0.015;
+    ground = viewportHeight - bird.offsetHeight;
+    initialGap = viewportHeight * 0.3;
+    minBarHeight = viewportHeight * 0.15;
+    maxBarHeight = viewportHeight * 0.45;
+    barVelocity = viewportWidth * 0.003; // Reduced bar velocity
+    speedIncreaseFactor = viewportWidth * 0.00001; // Slower speed increase
+});
+
+document.addEventListener('keydown', function(event) {
     if (event.code === 'Space') {
         isJumping = true;
         velocity = jumpStrength;
@@ -30,7 +44,7 @@ document.addEventListener('keydown' , function(event) {
     }
 });
 
-document.addEventListener('touchstart' , function(event) {
+document.addEventListener('touchstart', function(event) {
     isJumping = true;
     velocity = jumpStrength;
 
@@ -51,13 +65,13 @@ document.addEventListener('touchend', function(event) {
     isJumping = false;
 });
 
-let outerTop = outerRect.top;
+let outerTop = outerMid.getBoundingClientRect().top;
 
 function applyGravity() {
     if (!gameRunning) return;
 
     if (!isJumping) {
-        velocity += gravity; // Apply gravity
+        velocity += gravity; // Apply scaled gravity
     }
 
     let rect = bird.getBoundingClientRect();
@@ -78,44 +92,25 @@ function applyGravity() {
 }
 
 // Bar Movement
-
-let bar1 = {
-    a: document.getElementsByClassName('bar-1a')[0],
-    b: document.getElementsByClassName('bar-1b')[0]
-};
-
-let bar2 = {
-    a: document.getElementsByClassName('bar-2a')[0],
-    b: document.getElementsByClassName('bar-2b')[0]
-};
-
-let bar3 = {
-    a: document.getElementsByClassName('bar-3a')[0],
-    b: document.getElementsByClassName('bar-3b')[0]
-};
-
-let bar4 = {
-    a: document.getElementsByClassName('bar-4a')[0],
-    b: document.getElementsByClassName('bar-4b')[0]
-};
+let bar1 = { a: document.getElementsByClassName('bar-1a')[0], b: document.getElementsByClassName('bar-1b')[0] };
+let bar2 = { a: document.getElementsByClassName('bar-2a')[0], b: document.getElementsByClassName('bar-2b')[0] };
+let bar3 = { a: document.getElementsByClassName('bar-3a')[0], b: document.getElementsByClassName('bar-3b')[0] };
+let bar4 = { a: document.getElementsByClassName('bar-4a')[0], b: document.getElementsByClassName('bar-4b')[0] };
 
 let right = [bar1, bar2, bar3, bar4];
 let left = [];
 
-// Scaled initial gap between bars based on viewport height
-let initialGap = viewportHeight * 0.3; 
+let initialGap = viewportHeight * 0.3; // Scaled initial gap between bars
 let gap = initialGap;
-let min = viewportHeight * 0.1; // Scaled minimum bar height
-let max = viewportHeight * 0.5; // Scaled maximum bar height
+let minBarHeight = viewportHeight * 0.15; // Adjusted min bar height
+let maxBarHeight = viewportHeight * 0.45; // Adjusted max bar height
 
-let gapDecreaseFactor = viewportHeight * 0.0005; // Scale gap decrease factor
-let initialBarVelocity = viewportWidth * 0.005; // Scale bar speed based on viewport width
-
-let barVelocity = initialBarVelocity;   
-let speedIncreaseFactor = viewportWidth * 0.00002; // Scale speed increase factor
+let gapDecreaseFactor = viewportHeight * 0.0003; // Reduced gap decrease factor
+let barVelocity = viewportWidth * 0.003;    // Reduced bar speed based on viewport width
+let speedIncreaseFactor = viewportWidth * 0.00001; // Slower speed increase factor
 
 function getRandomNumber() {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (maxBarHeight - minBarHeight + 1)) + minBarHeight;
 }
 
 function setgap(bar) {
@@ -128,7 +123,6 @@ function setgap(bar) {
 let score = 0; // Initial score
 let scoreElement = document.getElementById('score'); // Reference to the score element
 
-// Update score on the screen
 function updateScore() {
     scoreElement.innerHTML = `Score: ${score}`;
 }
@@ -142,7 +136,7 @@ function moveBars(bar) {
     left.push(bar);
     right.shift();
 
-    let barPos = viewportWidth; // Bar starting position is scaled to viewport width
+    let barPos = viewportWidth; // Bar starting position scaled to viewport width
     let first1 = true;
     let hasScored = false; // Track if the score has already been counted for this bar
 
@@ -162,12 +156,11 @@ function moveBars(bar) {
             moveBars(right[0]);
         }
 
-        // Increment score when the bird passes the bar
         let birdRect = bird.getBoundingClientRect();
         if (!hasScored && barPos + bar.a.offsetWidth < birdRect.left) {
             score++;
             updateScore();
-            hasScored = true; // Prevent multiple increments for the same bar
+            hasScored = true;
         }
 
         barPos -= barVelocity; // Move bar with scaled velocity
@@ -180,24 +173,14 @@ function moveBars(bar) {
     updatebars();
 }
 
-// Gradually increase bar speed during gameplay
-function increaseBarSpeed() {
-    barVelocity += speedIncreaseFactor; // Increase speed over time
-}
-
-function decreaseGap() {
-    gap -= gapDecreaseFactor; // Decrease the gap between bars
-}
-
 setInterval(function() {
     if (gameRunning) {
-        increaseBarSpeed();
-        decreaseGap();
+        barVelocity += speedIncreaseFactor; // Gradually increase bar speed
+        gap -= gapDecreaseFactor; // Decrease the gap between bars
     }
 }, 100);
 
-// Detecting Collision
-
+// Collision Detection
 function detectCollision(bar) {
     let tobreak = true;
 
@@ -209,10 +192,8 @@ function detectCollision(bar) {
         let bar2Rect = bar.b.getBoundingClientRect();
 
         if (birdRect.left < bar1Rect.right) {
-            if (
-                (birdRect.right > bar1Rect.left && birdRect.top < bar1Rect.bottom) ||
-                (birdRect.bottom > bar2Rect.top && birdRect.right > bar2Rect.left)
-            ) {
+            if ((birdRect.right > bar1Rect.left && birdRect.top < bar1Rect.bottom) ||
+                (birdRect.bottom > bar2Rect.top && birdRect.right > bar2Rect.left)) {
                 gameRunning = false;
                 tobreak = false;
 
@@ -220,7 +201,6 @@ function detectCollision(bar) {
                 outerElement.classList.add('shake');
 
                 let gameOver = document.getElementById('game-over');
-
                 gameOver.style.display = 'block';
                 gameOver.style.opacity = '0';
 
@@ -238,9 +218,7 @@ function detectCollision(bar) {
                 bird.style.opacity = '0';
 
                 gameHold = true;
-
                 setTimeout(resetGame, 2000);
-
                 setTimeout(() => {
                     gameHold = false;
                 }, 2000);
@@ -255,51 +233,26 @@ function detectCollision(bar) {
     checkCollision();
 }
 
-// Reset Game Function
+// Reset Game
 function resetGame() {
     resetBars();
-
-    gap = initialGap; // Reset the gap
-
+    gap = initialGap;
     document.getElementById('game-over').style.display = 'none';
-
     bird.style.opacity = '1';
     bird.style.transition = '';
-
     bird.style.top = `${viewportHeight * 0.4}px`; // Reset bird position
     velocity = 0;
     isJumping = false;
     gameRunning = false;
-
-    barVelocity = initialBarVelocity; // Reset bar velocity
-    score = 0; // Reset the score
-    updateScore(); // Update the score display
+    barVelocity = viewportWidth * 0.003; // Reset bar velocity
+    score = 0;
+    updateScore();
 }
 
-// Reset Bar Positions
 function resetBars() {
     right = [bar1, bar2, bar3, bar4];
-
     right.forEach(bar => {
         bar.a.style.left = `${viewportWidth}px`;
         bar.b.style.left = `${viewportWidth}px`;
     });
 }
-
-// Adjust game elements on window resize
-window.addEventListener('resize', function() {
-    viewportHeight = window.innerHeight;
-    viewportWidth = window.innerWidth;
-
-    gravity = viewportHeight * 0.001;
-    jumpStrength = -viewportHeight * 0.02;
-    ground = viewportHeight - bird.offsetHeight;
-
-    initialGap = viewportHeight * 0.3;
-    gap = initialGap;
-    min = viewportHeight * 0.1;
-    max = viewportHeight * 0.5;
-
-    barVelocity = viewportWidth * 0.005;
-    speedIncreaseFactor = viewportWidth * 0.00002;
-});
