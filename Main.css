@@ -28,7 +28,7 @@ body {
 
 .outer-mid {
     background:url(img/background.jpg);
-    background-size: contain;
+    background-size: cover;
 
     border-radius: 2vh;
 
