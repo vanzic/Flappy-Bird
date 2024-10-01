@@ -1,0 +1,18 @@
+
+.bird-img{
+    height: 7vh;
+    width: 7vh;
+}
+
+.pipe-lower{
+    object-fit: fill;
+    
+    height:100%;
+    width: 100%;
+}
+.pipe-upper{
+    object-fit: fill;
+
+    height: 100%;
+    width: 100%;
+}
