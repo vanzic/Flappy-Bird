@@ -3,7 +3,7 @@ let outerRect = outerMid.getBoundingClientRect();
 
 let bird = document.getElementsByClassName('bird')[0];
 
-// Gravity and jump strength scaled to outerMid height for responsiveness
+// Gravity and jump strength scaled accordingly to outerMid height for responsiveness
 
 const gravity = outerMid.offsetHeight * 0.0004// Scaled gravity strength 
 const jumpStrength = -outerMid.offsetHeight * 0.01; // Scaled jump strength
@@ -128,6 +128,16 @@ function setgap(bar) {
     return bar;
 }
 
+
+
+let score = 0; // Initial score
+let scoreElement = document.getElementById('score'); // Reference to the score element
+
+// Update score on the screen
+function updateScore() {
+    scoreElement.innerHTML = `Score: ${score}`;
+}
+
 function moveBars(bar) {
     if (!gameRunning) return;
 
@@ -139,6 +149,7 @@ function moveBars(bar) {
 
     let barPos = outerMid.offsetWidth; // Bar starting position is scaled to container width
     let first1 = true;
+    let hasScored = false; // Track if the score has already been counted for this bar
 
     function updatebars() {
         if (!gameRunning) return;
@@ -151,9 +162,17 @@ function moveBars(bar) {
             return;
         }
 
-        if (barPos <= outerMid.offsetWidth * 0.6 && first1) {
+        if (barPos <= outerMid.offsetWidth * 0.55 && first1) {
             first1 = false;
             moveBars(right[0]);
+        }
+
+        // Increment score when the bird passes the bar
+        let birdRect = bird.getBoundingClientRect();
+        if (!hasScored && barPos + bar.a.offsetWidth < birdRect.left) {
+            score++;
+            updateScore();
+            hasScored = true; // Prevent multiple increments for the same bar
         }
 
         barPos -= barVelocity; // Move bar with scaled velocity
@@ -258,6 +277,8 @@ function resetGame() {
     gameRunning = false;
 
     barVelocity = initialBarVelocity; // Reset bar velocity
+    score = 0; // Reset the score
+    updateScore(); // Update the score display
 }
 
 // Reset Bar Positions
