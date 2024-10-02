@@ -22,7 +22,7 @@ document.addEventListener('keydown' , function(event) {
         isJumping = true;
         velocity = jumpStrength;
 
-        bird.innerHTML = '<img src="img/bird-down.png" class="bird-img"></img>';
+        bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
 
         if (!gameRunning && !gameHold) {
             gameRunning = true;
@@ -38,7 +38,7 @@ document.addEventListener('touchstart' , function(event) {
     isJumping = true;
     velocity = jumpStrength;
 
-    bird.innerHTML = '<img src="img/bird-down.png" class="bird-img"></img>';
+    bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
 
     if (!gameRunning && !gameHold) {
         gameRunning = true;
@@ -52,13 +52,13 @@ document.addEventListener('keyup', function(event) {
         isJumping = false;
     }
 
-    bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
+    bird.innerHTML = '<img src="img/bird-down.png" class="bird-img"></img>';
 });
 
 document.addEventListener('touchend', function(event) {
     isJumping = false;
 
-    bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
+    bird.innerHTML = '<img src="img/bird-down.png" class="bird-img"></img>';
 });
 
 let outerTop = outerRect.top;
