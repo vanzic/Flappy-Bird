@@ -218,7 +218,6 @@ body {
 @media (max-width: 750px) {
     .outer{
         width: 100vw;
-        background-color: pink;
     }
 
     .inputs-outer{
