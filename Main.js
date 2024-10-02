@@ -14,10 +14,15 @@ const ground = outerMid.offsetHeight - bird.offsetHeight; // Dynamic ground leve
 let gameRunning = false; // Control game state
 let gameHold = false;
 
+// initital bird img
+bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
+
 document.addEventListener('keydown' , function(event) {
     if (event.code === 'Space') {
         isJumping = true;
         velocity = jumpStrength;
+
+        bird.innerHTML = '<img src="img/bird-down.png" class="bird-img"></img>';
 
         if (!gameRunning && !gameHold) {
             gameRunning = true;
@@ -27,9 +32,13 @@ document.addEventListener('keydown' , function(event) {
     }
 });
 
+
+
 document.addEventListener('touchstart' , function(event) {
     isJumping = true;
     velocity = jumpStrength;
+
+    bird.innerHTML = '<img src="img/bird-down.png" class="bird-img"></img>';
 
     if (!gameRunning && !gameHold) {
         gameRunning = true;
@@ -42,10 +51,14 @@ document.addEventListener('keyup', function(event) {
     if (event.code === 'Space') {
         isJumping = false;
     }
+
+    bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
 });
 
 document.addEventListener('touchend', function(event) {
     isJumping = false;
+
+    bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
 });
 
 let outerTop = outerRect.top;
@@ -106,14 +119,13 @@ let left = [];
 
 let initialGap = outerMid.offsetHeight * 0.4; // Scaled initial gap between bars
 let gap = initialGap;
-let min = outerMid.offsetHeight * 0.5; // Scaled min bar height
-let max = outerMid.offsetHeight * 0.6; // Scaled max bar height
+let min = outerMid.offsetHeight * 0.2; // Scaled min bar height
+let max = outerMid.offsetHeight * 0.4; // Scaled max bar height
 
 let gapDecreaseFactor = outerMid.offsetHeight * 0.0005; // Scale gap decrease factor
 let initialBarVelocity = outerMid.offsetWidth * 0.004; // Scale bar speed based on container width
 
-let barVelocity = initialBarVelocity;   
-
+let barVelocity = initialBarVelocity;
 
 let speedIncreaseFactor = outerMid.offsetWidth * 0.00003; // Scale speed increase factor
 

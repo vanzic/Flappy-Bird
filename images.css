@@ -11,6 +11,15 @@
 .bird-img{
     height: 7vh;
     width: 7vh;
+
+    position: absolute;
+}
+
+.bird-img-down{
+    height: 7vh;
+    width: 7vh;
+
+    position: absolute;
 }
 
 .pipe-lower{
