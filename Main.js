@@ -106,7 +106,7 @@ let left = [];
 
 let initialGap = outerMid.offsetHeight * 0.4; // Scaled initial gap between bars
 let gap = initialGap;
-let min = outerMid.offsetHeight * 0.2; // Scaled min bar height
+let min = outerMid.offsetHeight * 0.5; // Scaled min bar height
 let max = outerMid.offsetHeight * 0.6; // Scaled max bar height
 
 let gapDecreaseFactor = outerMid.offsetHeight * 0.0005; // Scale gap decrease factor
