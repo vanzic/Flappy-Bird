@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
 }
@@ -52,9 +51,44 @@ body {
     overflow: hidden;
     position: relative;
 
-    border-color: darkgreen;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
+
+
+#score {
+    position: absolute;
+    top: 1.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: bold;
+    color: white; /* Bright color to make the score stand out */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds depth */
+    font-family: 'Press Start 2P', cursive; /* Retro game font, can be changed */
+    z-index: 100;
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+#score span {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out; /* Scaling animation when score changes */
+}
+
+/* A keyframe animation for fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* A pulse animation to give feedback when score changes */
+#score span.pulse {
+    transform: scale(1.3);
+}
+
 
 .bird {
     display: flex;
