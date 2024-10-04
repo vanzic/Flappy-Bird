@@ -61,10 +61,10 @@ body {
     left: 50%;
     transform: translateX(-50%);
     font-size: 3rem;
-    font-weight: bold;
+    font-weight:900;
     color: white; /* Bright color to make the score stand out */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds depth */
-    font-family: 'Press Start 2P', cursive; /* Retro game font, can be changed */
+    font-family: 'Baloo 2', cursive; /* Retro game font, can be changed */
     z-index: 100;
     animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
 }
@@ -260,4 +260,10 @@ body {
     .title-box{
         width: 100vw;
     }
+
+    .bird{
+        height: 4vh; 
+        width: 4vh;
+    }
+    
 }

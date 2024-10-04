@@ -150,7 +150,7 @@ let min = outerMid.offsetHeight * 0.2; // Scaled min bar height
 let max = outerMid.offsetHeight * 0.4; // Scaled max bar height
 
 let gapDecreaseFactor = outerMid.offsetHeight * 0.0005; // Scale gap decrease factor
-let initialBarVelocity = outerMid.offsetWidth * 0.0020; // Scale bar speed based on container width
+let initialBarVelocity = outerMid.offsetWidth * 0.003; // Scale bar speed based on container width
 
 let barVelocity = initialBarVelocity;
 
