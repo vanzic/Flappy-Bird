@@ -21,6 +21,7 @@ bird.innerHTML = '<img src="img/bird-up.png" class="bird-img"></img>';
 
 
 
+
 // Score Mechanism 
 
 let score = 0; // Initialize score
@@ -154,6 +155,9 @@ let initialBarVelocity = outerMid.offsetWidth * 0.003; // Scale bar speed based 
 
 let barVelocity = initialBarVelocity;
 
+let barGapFactor = 0.6;
+if(window.innerWidth < 750)barGapFactor = 0.4;
+
 let speedIncreaseFactor = outerMid.offsetWidth * 0.00003; // Scale speed increase factor
 
 function getRandomNumber() {
@@ -190,7 +194,7 @@ function moveBars(bar) {
             return;
         }
 
-        if (barPos <= outerMid.offsetWidth * 0.6 && first1) {
+        if (barPos <= outerMid.offsetWidth * barGapFactor && first1) {
             first1 = false;
             moveBars(right[0]);
         }
