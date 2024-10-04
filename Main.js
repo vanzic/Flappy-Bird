@@ -156,7 +156,7 @@ let initialBarVelocity = outerMid.offsetWidth * 0.003; // Scale bar speed based 
 let barVelocity = initialBarVelocity;
 
 let barGapFactor = 0.6;
-if(window.innerWidth < 750)barGapFactor = 0.4;
+if(window.innerWidth < 750)barGapFactor = 0.5;
 
 let speedIncreaseFactor = outerMid.offsetWidth * 0.00003; // Scale speed increase factor
 
